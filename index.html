@@ -1,0 +1,14 @@
+<ul id="files"></ul>
+
+<script>
+fetch('https://api.github.com/repos/Ermanchick/ForTestSubDomen/contents/')
+  .then(res => res.json())
+  .then(data => {
+    const list = document.getElementById('files');
+    data.forEach(file => {
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="${file.download_url}">${file.name}</a>`;
+      list.appendChild(li);
+    });
+  });
+</script>
